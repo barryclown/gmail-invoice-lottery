@@ -134,6 +134,15 @@ the full command for you.
 - Either way, delete `~/.gmail-invoice-lottery/` yourself afterwards and revoke the app password at
   <https://myaccount.google.com/apppasswords>.
 
+### 7. Common problems
+
+- **"Gmail 拒絕登入" / `AUTHENTICATIONFAILED Invalid credentials`**: the app password is mistyped or has been
+  revoked. Changing your Google password or resetting 2-Step Verification revokes existing app passwords.
+  Create a new one and run `account.py add` again.
+- **One shop's invoices never show up**: its emails don't contain the 發票號碼 label, or they aren't in the
+  Inbox (archived or moved by a filter). See Limitations.
+- **The plugin won't install**: see step 2 and use the full HTTPS URL.
+
 ## Privacy and security
 
 **Where data lives**: on your machine only, in `~/.gmail-invoice-lottery/` by default (override with the
@@ -149,17 +158,16 @@ The app password is stored in plain text, so any program that can read your user
 is why this uses an app password rather than your Google password: it can only fetch mail, and you can
 revoke it on its own at any time without touching your account.
 
-**What it connects to**: only `imap.gmail.com` (mail), `invoice.etax.nat.gov.tw` and `www.etax.nat.gov.tw`
-(winning numbers). No other servers, no telemetry. Only if you set `INVOICE_DNS_FALLBACK=1` does it ask
-Google Public DNS (8.8.8.8) when your local DNS fails to resolve a host.
+**What it connects to**: the scripts themselves only reach `imap.gmail.com` (mail), `invoice.etax.nat.gov.tw`
+and `www.etax.nat.gov.tw` (winning numbers). No other servers, no telemetry. Only if you set
+`INVOICE_DNS_FALLBACK=1` does it ask Google Public DNS (8.8.8.8) when your local DNS fails to resolve a host.
+Beyond that, when you use it through an AI such as Claude, whatever the scripts print (your address, invoice
+numbers, sellers, dates) enters the conversation, which means it goes to the AI service you use; the password
+never appears in any output. If that bothers you, run the three scripts yourself in a terminal instead.
 
 **Which mail it reads**: Inbox messages from the last N days (200 by default) that mention 發票, invoice or
 電子發票. Messages are parsed in memory; only the invoice fields in the table above are saved, never the
 message body.
-
-**What the AI sees**: whatever the scripts print (your address, invoice numbers, sellers, dates) appears in
-the conversation, which means it goes to the AI service you use. The password never appears in any output.
-If that bothers you, run the three scripts yourself in a terminal instead.
 
 **What it never does**: mark mail as read, delete, move, send, or change Gmail settings.
 
@@ -192,20 +200,6 @@ invoices don't enter the draw.
 - Script output and code comments are in Traditional Chinese.
 - **The Ministry of Finance announcement is authoritative.** This is a cross-checking aid; verify against the
   invoice itself before claiming.
-
-## Notes from the bugs (read before changing things)
-
-- **Chinese search terms find nothing**: Gmail's `X-GM-RAW` search must be sent as an IMAP literal with
-  `CHARSET UTF-8`, or `imaplib` fails while encoding it as ASCII.
-- **Order numbers mistaken for invoice numbers**: "two letters plus eight digits" is everywhere; order numbers
-  and verification codes look the same. So it only takes numbers next to the 發票號碼 label, falling back to
-  a full-text match only when the message mentions 發票 at all.
-- **`AUTHENTICATIONFAILED Invalid credentials`**: changing your Google password or resetting 2-Step
-  Verification revokes existing app passwords. Create a new one and run `account.py add` again.
-- **Garbled Chinese on Windows**: Python writes in the system code page by default; the scripts switch stdout to UTF-8.
-- **When the RSS date is malformed**, the draw date falls back to the 25th of the month after the period.
-  The Nov–Dec period rolls into January of the next year; without that it computes "month 13" and crashes.
-- **Data can't live in the skill folder**: a plugin update replaces the whole folder, taking your account settings with it.
 
 ## Licence
 

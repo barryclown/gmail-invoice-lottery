@@ -81,6 +81,7 @@ def parse_rss(xml, fetch_sixth=fetch_increased_sixth):
         try:
             draw = datetime.datetime.strptime(pub.group(1)[:16].strip(), "%a, %d %b %Y").date()
         except Exception:
+            # pubDate 壞掉就用「雙月的下個月 25 日」；11–12 月期要跨到隔年 1 月，不然會算出 13 月
             draw = datetime.date(year + (int(m2) == 12), int(m2) % 12 + 1, 25)
         cs, ce = claim_window(draw)
 
