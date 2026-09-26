@@ -1,0 +1,15 @@
+{
+  "name": "gmail-invoice-lottery",
+  "owner": {
+    "name": "barryclown",
+    "url": "https://github.com/barryclown"
+  },
+  "plugins": [
+    {
+      "name": "gmail-invoice-lottery",
+      "source": "./",
+      "description": "Check Taiwan uniform-invoice lottery results from your Gmail e-invoice emails. / 用 Gmail 裡的電子發票通知自動對統一發票。"
+    }
+  ],
+  "description": "Taiwan uniform-invoice lottery checker for Claude Code, by barryclown. / barryclown 的統一發票對獎 skill。"
+}

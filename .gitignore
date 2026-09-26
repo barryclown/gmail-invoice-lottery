@@ -1,0 +1,9 @@
+# 個人資料：帳號與應用程式密碼、撈到的發票、中獎號碼快取（預設放在 ~/.gmail-invoice-lottery/，這裡是防萬一）
+accounts.json
+invoices_*.json
+winning_numbers.json
+*.tmp
+# 本機修改日誌（含個人路徑與過程紀錄）
+修改日誌.md
+__pycache__/
+*.pyc

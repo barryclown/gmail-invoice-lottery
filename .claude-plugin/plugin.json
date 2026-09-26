@@ -1,0 +1,20 @@
+{
+  "name": "gmail-invoice-lottery",
+  "description": "Checks Taiwan uniform-invoice (統一發票) lottery results from the e-invoice emails in your Gmail. Read-only IMAP, winning numbers from the official Ministry of Finance feed, app password never enters the chat. / 掃 Gmail 裡的電子發票通知信，自動對統一發票。信箱唯讀、中獎號碼抓財政部官方 RSS、應用程式密碼不進 AI 對話。",
+  "version": "1.0.0",
+  "author": {
+    "name": "barryclown",
+    "url": "https://github.com/barryclown"
+  },
+  "homepage": "https://github.com/barryclown/gmail-invoice-lottery",
+  "repository": "https://github.com/barryclown/gmail-invoice-lottery",
+  "license": "MIT",
+  "keywords": [
+    "taiwan",
+    "uniform-invoice",
+    "e-invoice",
+    "lottery",
+    "gmail",
+    "skill"
+  ]
+}

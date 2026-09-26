@@ -1,0 +1,4 @@
+interface:
+  display_name: "對發票"
+  short_description: "掃 Gmail 的電子發票通知，對財政部統一發票中獎號碼"
+  default_prompt: "Use $invoice to check my uniform-invoice lottery results from Gmail."
