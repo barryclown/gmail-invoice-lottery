@@ -75,6 +75,10 @@ Claude：7–8 月那期中了 1 張六獎，NT$200，10/6 起可以領，2027/1
 
 裝好後重開 Claude Code。
 
+如果第一行出現 `Host key verification failed` 或 `SSH host key is not in your known_hosts`，
+代表 `owner/repo` 這種簡寫在你的電腦上會走 SSH、但你沒設定 GitHub 的 SSH。改用完整網址就好：
+`/plugin marketplace add https://github.com/barryclown/gmail-invoice-lottery.git`
+
 **方法 B：直接放進 skills 資料夾**
 
 ```bash
@@ -94,7 +98,9 @@ python <skill 資料夾>/scripts/account.py add main you@gmail.com
 ```
 
 `main` 是帳號的標籤，之後可以用它指定要對哪個帳號。有好幾個信箱就各加一次，換個標籤。
-不知道 skill 資料夾在哪的話，直接跟 Claude 說「對發票」，它會把完整指令印給你。
+
+skill 資料夾在哪：方法 A 是 `~/.claude/plugins/cache/gmail-invoice-lottery/gmail-invoice-lottery/<版本>/skills/invoice`，
+方法 B 就是你複製過去的位置。找不到的話，直接跟 Claude 說「對發票」，它會把完整指令印給你。
 
 ### 4. 確認裝好了
 

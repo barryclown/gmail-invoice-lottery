@@ -85,6 +85,10 @@ The matching is done by the script, not the AI. The AI runs the scripts and expl
 
 Then restart Claude Code.
 
+If the first line fails with `Host key verification failed` or `SSH host key is not in your known_hosts`,
+the `owner/repo` shorthand is cloning over SSH and your machine has no GitHub SSH setup. Use the full URL instead:
+`/plugin marketplace add https://github.com/barryclown/gmail-invoice-lottery.git`
+
 **Method B: drop it into your skills folder**
 
 ```bash
@@ -105,7 +109,9 @@ python <skill folder>/scripts/account.py add main you@gmail.com
 ```
 
 `main` is a label you can use later to pick an account. Add each mailbox once with its own label.
-If you don't know where the skill folder is, just ask Claude to check your invoices and it will print
+
+Where the skill folder is: with Method A, `~/.claude/plugins/cache/gmail-invoice-lottery/gmail-invoice-lottery/<version>/skills/invoice`;
+with Method B, wherever you copied it. If in doubt, ask Claude to check your invoices and it will print
 the full command for you.
 
 ### 4. Check it works
